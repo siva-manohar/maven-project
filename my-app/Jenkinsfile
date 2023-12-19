@@ -1,33 +1,24 @@
 pipeline {
-    agent any
 
     tools {
         maven "maven"
-        jdk "jdk11"
+        jdk "jdk17"
     }
 
     stages {
         stage('Initialize'){
             steps{
                 echo "PATH = ${M2_HOME}/bin:${PATH}"
-                echo "M2_HOME = /opt/apache-maven*"
+                echo "M2_HOME = /var/lib/jenkins/apache-maven*"
             }
         }
         stage('Build') {
             steps {
-                dir("/var/lib/jenkins/workspace/sample-maven/my-app") {
+                dir("/var/lib/jenkins/workspace/maven-sample-project/my-app") {
                 sh 'mvn clean package'
                 }
             
             }
         }
      }
-    post {
-       always {
-          junit(
-        allowEmptyResults: true,
-        testResults: '*/test-reports/.xml'
-      )
-      }
-   } 
 }
