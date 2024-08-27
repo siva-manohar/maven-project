@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir("/var/lib/jenkins/workspace/maven-sample-project/my-app") {
+                dir("/var/lib/jenkins/workspace/maven-project/my-app") {
                 sh 'mvn clean package'
                 }
             
