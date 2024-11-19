@@ -1,10 +1,5 @@
 pipeline {
-
-    tools {
-        maven "maven"
-        jdk "jdk17"
-    }
-
+    agent any;
     stages {
         stage('Build') {
             steps {
