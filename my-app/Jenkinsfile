@@ -1,13 +1,30 @@
 pipeline {
-    agent any;
+    agent any
     stages {
-        stage('Build') {
-            steps {
-                dir("/var/lib/jenkins/workspace/maven-project/my-app") {
-                sh 'mvn clean package'
-                }
-            
+        stage('maven clean and validate'){
+            steps{
+                // #script execute
+                // multiple commands script
+                sh '''
+                mvn clean
+                mvn validate
+                '''
+                //Single command script
+                // sh 'mvn clean'
             }
         }
-     }
+        stage('maven compile and test'){
+            steps{
+                sh '''
+                mvn compile
+                mvn test
+                '''                    
+            }
+        }
+        stage('maven package'){
+            steps{
+                sh 'mvn package'                  
+            }
+        }
+    }
 }
