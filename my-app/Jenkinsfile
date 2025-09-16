@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('maven clean and validate'){
             steps{
-                dir("/var/lib/jenkins/workspace/sample-piepline/my-app") {
+                dir("/var/lib/jenkins/workspace/sample-pipeline/my-app") {
                 // #script execute
                 // multiple commands script
                 sh '''
@@ -17,7 +17,7 @@ pipeline {
         }
         stage('maven compile and test'){
             steps{
-                dir("/var/lib/jenkins/workspace/sample-piepline/my-app") {
+                dir("/var/lib/jenkins/workspace/sample-pipeline/my-app") {
                 sh '''
                 mvn compile
                 mvn test
@@ -27,7 +27,7 @@ pipeline {
         }
         stage('maven package'){
             steps{
-                dir("/var/lib/jenkins/workspace/sample-piepline/my-app") {
+                dir("/var/lib/jenkins/workspace/sample-pipeline/my-app") {
                 sh 'mvn package' 
                 }                 
             }
