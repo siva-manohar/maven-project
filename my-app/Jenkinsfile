@@ -3,12 +3,13 @@ pipeline {
     stages {
         stage('maven clean and validate'){
             steps{
+                // #pom.xml directory path
                 dir("/var/lib/jenkins/workspace/sample-pipeline/my-app") {
                 // #script execute
                 // multiple commands script
                 sh '''
-                mvn clean
                 mvn validate
+                mvn clean
                 '''
                 //Single command script
                 // sh 'mvn clean'
